@@ -77,7 +77,7 @@ fun DefaultListAppBar(onSearchClicked : () -> Unit,
     TopAppBar(
         title={
             Text(
-                text="Tasks",
+                text= stringResource(id = R.string.list_screen_title),
                 color = MaterialTheme.colors.topAppBarContentColor
             )
         },
@@ -218,7 +218,7 @@ fun SearchAppBar(text:String,
                 Text(
                     modifier = androidx.compose.ui.Modifier
                         .alpha(ContentAlpha.medium),
-                    text="Search",
+                    text= stringResource(id = R.string.search_placeholder),
                     color = Color.White
                 )
             },
@@ -234,7 +234,7 @@ fun SearchAppBar(text:String,
                     onClick = {}) {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = "Search Icon",
+                        contentDescription = stringResource(id = R.string.search_icon),
                         tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
@@ -257,7 +257,7 @@ fun SearchAppBar(text:String,
                     }
                 }) {
                     Icon(imageVector = Icons.Filled.Close,
-                    contentDescription = "Close Icon",
+                    contentDescription = stringResource(id = R.string.close_icon),
                     tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
@@ -295,7 +295,7 @@ private fun DefaultListAppBarPreview(){
 @Preview
 private fun SearchAppBarPreview(){
     SearchAppBar(
-            text="Search",
+            text= "",
             onTextChange = {},
             onCloseClicked = {},
             onSearchClicked = {}

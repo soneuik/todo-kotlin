@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.sunsoft.todo_jetpack.R
 import com.sunsoft.todo_jetpack.ui.screens.list.ListAppBar
+import com.sunsoft.todo_jetpack.ui.screens.list.ListContent
 import com.sunsoft.todo_jetpack.ui.theme.fabBackgroundColor
 import com.sunsoft.todo_jetpack.ui.viewmodels.SharedViewModel
 import com.sunsoft.todo_jetpack.util.SearchAppBarState
@@ -34,7 +35,9 @@ fun ListScreen(
                 searchTextState = searchTextState
             )
         } ,
-        content = {},
+        content = {
+                  ListContent()
+        },
         floatingActionButton = {
             ListFab(onFabClicked = navigationToTaskScreen)
         },
