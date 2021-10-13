@@ -1,6 +1,8 @@
 package com.sunsoft.todo_jetpack.ui.screens.list
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -18,9 +20,24 @@ import com.sunsoft.todo_jetpack.ui.theme.*
 import java.lang.reflect.Modifier
 
 
+@ExperimentalMaterialApi
 @Composable
-fun ListContent(){
-
+fun ListContent(
+    tasks: List<ToDoTask>,
+    navigateToTaskScreen:(taskId: Int) -> Unit
+){
+    LazyColumn{
+        items(
+            items = tasks,
+            key= {task->
+                task.id
+            }
+        ){
+            task ->
+            TaskItem(toDoTask = task,
+                navigateToTaskScreen = navigateToTaskScreen)
+        }
+    }
 }
 
 @ExperimentalMaterialApi
@@ -41,8 +58,8 @@ fun TaskItem(
     ){
         Column(
             modifier = androidx.compose.ui.Modifier
-            .padding(all = LARGE_PADDING)
-            .fillMaxWidth()
+                .padding(all = LARGE_PADDING)
+                .fillMaxWidth()
         ){
             Row{
                 Text(
@@ -55,8 +72,8 @@ fun TaskItem(
                 )
                 Box(
                     modifier = androidx.compose.ui.Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
+                        .fillMaxWidth()
+                        .weight(1f),
                     contentAlignment = Alignment.TopEnd
                     ){
                     androidx.compose.foundation.Canvas(modifier = androidx.compose.ui.Modifier

@@ -1,5 +1,6 @@
 package com.sunsoft.todo_jetpack.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
@@ -10,6 +11,7 @@ import com.sunsoft.todo_jetpack.navigation.destinations.taskComposable
 import com.sunsoft.todo_jetpack.ui.viewmodels.SharedViewModel
 import com.sunsoft.todo_jetpack.util.Constants.LIST_SCREEN
 
+@ExperimentalMaterialApi
 @Composable
 fun SetupNavigation (
     navController: NavHostController,
