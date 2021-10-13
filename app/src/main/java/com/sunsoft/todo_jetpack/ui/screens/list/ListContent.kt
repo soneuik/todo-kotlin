@@ -26,6 +26,22 @@ fun ListContent(
     tasks: List<ToDoTask>,
     navigateToTaskScreen:(taskId: Int) -> Unit
 ){
+    if(tasks.isEmpty()){
+        EmptyContent()
+    }else{
+        DisplayTasks(tasks = tasks,
+            navigateToTaskScreen = navigateToTaskScreen
+        )
+    }
+}
+
+@ExperimentalMaterialApi
+@Composable
+fun DisplayTasks(
+    tasks: List<ToDoTask>,
+    navigateToTaskScreen:(taskId: Int) -> Unit
+){
+    //show list all data using, LazyColumn composable function.
     LazyColumn{
         items(
             items = tasks,
@@ -33,7 +49,7 @@ fun ListContent(
                 task.id
             }
         ){
-            task ->
+                task ->
             TaskItem(toDoTask = task,
                 navigateToTaskScreen = navigateToTaskScreen)
         }
@@ -77,8 +93,7 @@ fun TaskItem(
                     contentAlignment = Alignment.TopEnd
                     ){
                     androidx.compose.foundation.Canvas(modifier = androidx.compose.ui.Modifier
-                        .width(PRIORITY_INDICATOR_SIZE)
-                        .height(PRIORITY_INDICATOR_SIZE)){
+                        .size(PRIORITY_INDICATOR_SIZE)){
                         drawCircle(
                             color = toDoTask.priority.color
                         )
